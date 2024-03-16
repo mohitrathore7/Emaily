@@ -15,26 +15,27 @@ module.exports = (app) => {
           token: req.body.id,
         },
       },
-      automatic_payment_methods: {
-        enabled: true,
-        allow_redirects: 'never'
-      //  return_url: 'http://localhost:3000/'
-    }
+    //   automatic_payment_methods: {
+    //     enabled: true,
+    //     allow_redirects: 'never'
+    //   //  return_url: 'http://localhost:3000/'
+    // }
     
         
         
-      // confirmation_method: "manual",
-      // confirm: "true",
-    // return_url: 'http://localhost:3000/'
+      confirmation_method: "manual",
+      confirm: "true",
+     return_url: 'http://localhost:3000/'
     });
 
 
     req.user.credits += 5;
  const user = await req.user.save();
- res.json({
-  user,
-  clientSecret:paymentIntent.client_secret
- });
+ res.send(user);
+// res.json({
+//  user,
+ // clientSecret:paymentIntent.client_secret
+  // });
  
   //  console.log(paymentIntent);
   });
